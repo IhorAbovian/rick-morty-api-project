@@ -69,7 +69,7 @@ characterNamesDisplay = charactersArr
   .map(
     (char) => `
       <a 
-        href="./character.html?id=${char.id}&characterId=${char.id}" 
+        href="./character.html?id=${char.id}&episodeId=${params.id}" 
         class="block bg-[#23252b] text-white rounded-lg px-4 py-3 text-center font-semibold shadow hover:bg-orange-400 hover:text-[#23252b] transition-colors duration-150 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-12px)] flex-shrink-0"
       >
         ${char.name}

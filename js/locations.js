@@ -73,13 +73,13 @@ const renderLocations = (locations = []) => {
               <p class="text-gray-400 text-xs font-semibold uppercase mb-1">
                 <i class="fa-solid fa-globe mr-2"></i>${dimension}
               </p>
-              <p class="text-white text-xs">Unknown</p>
+              
             </div>
             <div class="border-t border-gray-600 pt-3 mt-3">
               <p class="text-gray-400 text-xs font-semibold uppercase mb-1">
                 <i class="fa-solid fa-users mr-2"></i>${residents.length}
               </p>
-              <p class="text-white text-xs">356</p>
+              
             </div>
           </article>`;
   });

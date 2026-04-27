@@ -56,7 +56,7 @@ const renderCharacter = async (character = {}) => {
       const episodePagePath = `${EPISODE_PAGE_PATH}?id=${episodeId}&characterId=${character.id}`;
       return `<a 
       href="${episodePagePath}" 
-      class="block bg-[#23252b] text-white rounded-lg px-4 py-3 text-center font-semibold shadow hover:bg-orange-400 hover:text-[#23252b] transition-colors duration-150 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-12px)] flex-shrink-0"
+      class="block bg-[#23252b] text-white rounded-lg px-4 py-3 text-center font-semibold shadow hover:bg-orange-400 hover:text-[#23252b] transition-colors duration-150 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-12px)]"
     >
       Episode ${episodeId}
     </a>`;
@@ -120,9 +120,9 @@ const renderCharacter = async (character = {}) => {
                   <p class="text-gray-400 text-xs font-semibold uppercase mb-1">
                     <i class="fa-solid fa-location-dot mr-1"></i> Location
                   </p>
-                  <p class="text-white text-base">
+                  <a href="#" class="text-white text-base hover:text-orange-400 transition-colors duration-150">
                     ${location?.name}
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@ const renderCharacter = async (character = {}) => {
       backBtn.href = `episode.html?id=${episodeId}`;
       backBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> <span>Back to episode</span>`;
     } else {
-      backBtn.href = "characters.html";
+      backBtn.href = "../index.html";
       backBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> <span>Back to all characters</span>`;
     }
   }

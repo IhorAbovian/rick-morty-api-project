@@ -92,6 +92,17 @@ const renderLocations = (locations = []) => {
 
 (async () => {
   allLocations = await getData();
+
+  const { sort: defaultSort } = getSearchParams();
+  if (defaultSort) {
+    const [sortBy, sortOrder] = defaultSort.split(":");
+    allLocations = allLocations.toSorted((a, b) => {
+      const valueA = String(a[sortBy] || "").toLowerCase();
+      const valueB = String(b[sortBy] || "").toLowerCase();
+      return valueA.localeCompare(valueB) * Number(sortOrder);
+    });
+  }
+  
   renderLocations(allLocations);
 
   const searchValue = document.getElementById("search-form");
@@ -116,19 +127,21 @@ const renderLocations = (locations = []) => {
     }
   };
   searchValue.addEventListener("submit", searchLocations);
+  
 
   const sortForm = document.getElementById("sort-form");
+  setDefaultValues(sortForm);
 
   const sortCallback = async (event) => {
     const sortField = event.target;
-    const sortValue = sortBy?.value;
+    const sortValue = sortField?.value;
 
     saveSearchParams({
       sort: sortValue,
     });
 
     if (sortValue) {
-      const { sortBy, sortOrder } = sortValue.split(":");
+      const [ sortBy, sortOrder ] = sortValue.split(":");
 
       const sortedLocations = allLocations.toSorted((a, b) => {
         const valueA = String(a[sortBy] || "").toLowerCase();

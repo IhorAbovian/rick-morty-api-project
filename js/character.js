@@ -147,11 +147,15 @@ const renderCharacter = async (character = {}) => {
   const characterId = searchParams.id;
 
    const episodeId = searchParams.episodeId;
+  const locationId = searchParams.locationId;
   const backBtn = document.getElementById("back-btn");
   if (backBtn) {
     if (episodeId) {
       backBtn.href = `episode.html?id=${episodeId}`;
       backBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> <span>Back to episode</span>`;
+    } else if (locationId) {
+      backBtn.href = `location.html?id=${locationId}`;
+      backBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> <span>Back to location</span>`;
     } else {
       backBtn.href = "../index.html";
       backBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> <span>Back to all characters</span>`;

@@ -63,7 +63,7 @@ const renderLocations = (locations = []) => {
               <h3
                 class="text-white font-bold text-sm hover:text-orange-400 cursor-pointer transition-colors"
               >
-                <a href="location.html?name=${name}">${name}</a>
+                <a href="location.html?id=${location.id}">${name}</a>
               </h3>
               <p class="text-orange-400 font-bold text-xs mb-1">
                 Type: ${type}

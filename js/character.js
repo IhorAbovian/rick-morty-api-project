@@ -120,7 +120,7 @@ const renderCharacter = async (character = {}) => {
                   <p class="text-gray-400 text-xs font-semibold uppercase mb-1">
                     <i class="fa-solid fa-location-dot mr-1"></i> Location
                   </p>
-                  <a href="#" class="text-white text-base hover:text-orange-400 transition-colors duration-150">
+                  <a href="/pages/location.html?id=${location?.url?.split("/").at(-1)}&characterId=${character.id}" class="text-white text-base hover:text-orange-400 transition-colors duration-150">
                     ${location?.name}
                   </a>
                 </div>

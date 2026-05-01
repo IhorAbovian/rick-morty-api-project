@@ -71,7 +71,7 @@ const renderCharacters = (characters = []) => {
     }
 
     return `<article
-              class="flex rounded-lg bg-[#3c3e44] shadow-lg w-[calc(50%-12px)] max-w-[450px] mb-6"
+              class="flex rounded-lg bg-[#3c3e44] shadow-lg w-[calc(50%-12px)] max-w-[450px] mb-6 md: flex-col"
             >
               <div class="w-1/3">
                 <img

@@ -71,36 +71,35 @@ const renderCharacters = (characters = []) => {
     }
 
     return `<article
-              class="flex rounded-lg bg-[#3c3e44] shadow-lg w-[calc(50%-12px)] max-w-[450px] mb-6 md: flex-col"
+              class="flex flex-col rounded-lg bg-[#3c3e44] shadow-lg w-[calc(50%-12px)] mb-4 overflow-hidden"
             >
-              <div class="w-1/3">
+              <div class="w-full h-40">
                 <img
                   src="${image}" loading=lazy decoding=async
                   alt="${name}"
-                  class="h-full w-full object-cover rounded"
+                  class="h-full w-full object-cover"
                 />
               </div>
 
-              <div class="w-2/3 p-4 flex flex-col">
+              <div class="p-3 flex flex-col">
                 <div>
                   <h2
-                    class="text-2xl font-black text-white hover:text-orange-400 cursor-pointer"
+                    class="text-sm font-bold text-white hover:text-orange-400 cursor-pointer line-clamp-2"
                   >
                     <a href="${CHARACTER_PAGE_PATH}?id=${id}">${name}</a>
                   </h2>
                   <p
-                    class="flex items-center gap-2 text-sm font-medium text-white"
+                    class="flex items-center gap-2 text-xs font-medium text-white mt-1"
                   >
-                    <span class="h-2 w-2 rounded-full ${statusColor}"></span>
-                    ${status} - ${species}
+                    <span class="h-2 w-2 rounded-full ${statusColor} flex-shrink-0"></span>
+                    <span class="line-clamp-1">${status} - ${species}</span>
                   </p>
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-2">
                   <p class="text-gray-400 text-xs font-semibold uppercase">
-                    Last known location:
-                  </p>
-                  <p class="text-white text-base">
+                    Location:</p>
+                  <p class="text-white text-xs line-clamp-1">
                     ${location?.name || "Unknown"}
                   </p>
                 </div>

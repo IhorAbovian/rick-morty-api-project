@@ -135,31 +135,35 @@ const renderCharacters = (characters = []) => {
   }
 
   const sortForm = document.getElementById("sort-form");
+  const sortFormMobile = document.getElementById("sort-form-mobile");
 
-  // The same w/o helper function
-  // if (sortForm) {
-  //   const sortField = sortForm.sort;
-
-  //   if (sortField) {
-  //     sortField.value = defaultSort || "";
-  //   }
-  // }
-
+  // Set default values
   if (sortForm) {
     setDefaultValues(sortForm);
+  }
+  if (sortFormMobile) {
+    setDefaultValues(sortFormMobile);
   }
 
   renderCharacters(characters);
 
   //
   const searchForm = document.getElementById("search-form");
+  const searchFormMobile = document.getElementById("search-form-mobile");
   setDefaultValues(searchForm);
+  if (searchFormMobile) {
+    setDefaultValues(searchFormMobile);
+  }
 
   const searchCallBack = async (event) => {
     event.preventDefault();
 
     const form = event.target;
     const qValue = form.name?.value || "";
+
+    // Sync both forms
+    if (searchForm) searchForm.name.value = qValue;
+    if (searchFormMobile) searchFormMobile.name.value = qValue;
 
     saveSearchParams({ name: qValue, page: 1 });
 
@@ -176,13 +180,17 @@ const renderCharacters = (characters = []) => {
         loadMoreBtn.style.display = characters.length < 20 ? "none" : "block";
       }
     }
-    searchForm?.addEventListener("submit", searchCallBack);
   };
+  searchForm?.addEventListener("submit", searchCallBack);
+  searchFormMobile?.addEventListener("submit", searchCallBack);
 
   const sortCallback = async (event) => {
     const sortField = event.target;
-
     const sortValue = sortField?.value;
+
+    // Sync both forms
+    if (sortForm) sortForm.sort.value = sortValue;
+    if (sortFormMobile) sortFormMobile.value = sortValue;
 
     saveSearchParams({
       sort: sortValue,
@@ -207,6 +215,7 @@ const renderCharacters = (characters = []) => {
     renderCharacters(characters);
   };
   sortForm?.addEventListener("change", sortCallback);
+  sortFormMobile?.addEventListener("change", sortCallback);
 
   const loadMoreBtn = document.getElementById("load-more-btn");
 
@@ -252,6 +261,26 @@ const renderCharacters = (characters = []) => {
   setDefaultValues(filterForm); // Подставить значения фильтров из URL
 }
 })();
+
+
+const hamburgerBtn = document.getElementById("hamburger-btn");
+const mobileNav = document.getElementById("mobile-nav");
+
+hamburgerBtn?.addEventListener("click", () => {
+  const icon = hamburgerBtn.querySelector("i");
+  
+  mobileNav.classList.toggle("hidden");
+  mobileNav.classList.toggle("flex");
+  
+
+  if (icon.classList.contains("fa-bars")) {
+    icon.classList.remove("fa-bars");
+    icon.classList.add("fa-xmark");
+  } else {
+    icon.classList.remove("fa-xmark");
+    icon.classList.add("fa-bars");
+  }
+});
 
 // Sorting:
 // Options #1 - server side sorting via GET params
